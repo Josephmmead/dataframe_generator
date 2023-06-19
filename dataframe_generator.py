@@ -52,13 +52,14 @@ def get_dataset(size):
 if __name__ == "__main__":
     spark = SparkSession.builder.getOrCreate()
 
+    amount_of_columns = 1000
+
     for i in range(1):
-        df = get_dataset(1000)
+        df = get_dataset(amount_of_columns)
         print('finished')
         print(df)
 
     spark_df = spark.createDataFrame(df)
     spark_df.show()
-    spark_df.write.csv(file_path, header=True, sep=',')
 
 
